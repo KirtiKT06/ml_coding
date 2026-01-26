@@ -236,8 +236,8 @@ def main():
     # ============================================================
     n = 1000000
     # Choose distribution by uncommenting
-    # dist = TriangularPDF()
-    dist = LinearPDF()   # <- switch here if needed
+    dist = TriangularPDF()
+    # dist = LinearPDF()   # <- switch here if needed
     # Choose sampler bu uncommenting
     sampler = InversionSampler(dist)
     # sampler = RejectionSampler(dist, M=2)
