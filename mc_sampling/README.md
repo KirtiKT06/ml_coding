@@ -19,6 +19,8 @@ for educational and coursework purposes.
   \]
 
 - Symmetric triangular distribution on \([-1,1]\)
+- Gaussian distribution
+- LJ(12-6) potential calculation using r_cut
 
 Each distribution provides:
 - analytical probability density
