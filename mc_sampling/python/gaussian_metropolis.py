@@ -260,7 +260,8 @@ def main():
         samples = sampler.sample(1000000)
         x_hist, pdf_hist = sampler.estimate_pdf(samples)                                            # PDF estimation from the SAME data
         pdf_exact = sampler.analytic_pdf(x_hist)
-        max_error = np.max(np.abs(pdf_hist - pdf_exact)/pdf_exact)                                  # Quantitative validation
+        dx = x_hist[1] - x_hist[0]
+        pdf_error = np.sqrt(np.sum((pdf_hist - pdf_exact)**2) * dx)                                 # Quantitative validation
         tau, N_eff = sampler.autocorrelation_time(samples[:200000])                                 # Diagnostics
         results.append({
             "σ": sigma,
@@ -268,7 +269,7 @@ def main():
             "Acceptance": sampler.last_acceptance_rate,
             "τ_int": tau,
             "N_eff": N_eff,
-            "PDF_error": max_error})
+            "PDF_error": pdf_error})
         sampler.plot(samples)                                                                       # Plot from same data
     df = pd.DataFrame(results)
     print(tabulate(df, headers="keys", tablefmt="github", floatfmt=".4f"))                          # Print data in table form
