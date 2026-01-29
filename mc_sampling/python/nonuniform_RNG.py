@@ -208,7 +208,7 @@ class Experiment:
             print(f"Acceptance rate is: {self.sampler.acceptance_rate()}\n")
         print(tabulate(df, headers="keys", tablefmt="github", floatfmt=".6f"))
         print("\nComparison of Probability Densities from Generated histogram vs. True function\n")
-        print(tabulate(df, headers="keys", tablefmt="github", floatfmt=".6f"))       
+        print(tabulate(df_err, headers="keys", tablefmt="github", floatfmt=".6f"))       
     
     def plot(self, bins=100):
         """Plot histogram and analytical PDF."""
@@ -246,9 +246,9 @@ def main():
     # Choose distribution by uncommenting
     # dist = TriangularPDF()
     dist = LinearPDF()   # <- switch here if needed
-    # Choose sampler bu uncommenting
-    # sampler = InversionSampler(dist)
-    sampler = RejectionSampler(dist, M=2)
+    # Choose sampler by uncommenting
+    sampler = InversionSampler(dist)
+    # sampler = RejectionSampler(dist, M=2)
     # Run experiment
     exp = Experiment(dist, sampler, n)
     exp.run()

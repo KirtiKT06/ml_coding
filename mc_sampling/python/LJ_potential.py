@@ -4,13 +4,7 @@ import pandas as pd
 from tabulate import tabulate
 from tqdm import tqdm
 import os
-"""
-=============================
-Directory Setup
-=============================
-"""
-os.makedirs("results/tables", exist_ok=True)
-os.makedirs("results/figures", exist_ok=True)
+from config import TABLES_DIR, FIGURES_DIR
 
 class LJ_potential:
     r"""
@@ -177,15 +171,11 @@ class LJ_potential:
                         r"$U_total$": self.U_total_list,
                         r"$U/N$": self.U_per_particle,
                           })
-        filename = f"results/tables/{self.__class__.__name__}_stats.csv"
-        df.to_csv(filename, float_format="%.6f")
-        latex_file = filename.replace(".csv", ".tex")
-        df.to_latex(
-        latex_file,
+        print(tabulate(df, headers="keys", tablefmt="github", floatfmt=".6f"))
+        df.to_csv(
+        os.path.join(TABLES_DIR, "LJ Potentials.csv"), 
         float_format="%.6f",
-        caption="Lennard–Jones energy components as a function of cut-off radius",
-        label="tab:lj_cutoff_convergence"
-        )
+        index=False)
 
 
     def plotting(self):    
@@ -207,8 +197,6 @@ class LJ_potential:
         - convergence of total energy for r_c ≳ 2.5σ
         """
         N = self.positions.shape[0]
-        filename1 = f"results/figures/LJ_energy_components_N{N}.pdf"
-        filename2 = f"results/figures/LJ_energy_per_particle_N{N}.pdf"
         plt.figure(figsize=(7, 5))   
         plt.xlim(0.9, 4.1)
         plt.ylim(-800, 1700)
@@ -225,7 +213,9 @@ class LJ_potential:
         ax.spines["right"].set_visible(False)
         plt.legend(frameon=False)
         plt.tight_layout()
-        plt.savefig(filename1.replace(".pdf", ".png"), dpi=600, bbox_inches="tight")
+        plt.savefig(os.path.join(FIGURES_DIR, f"LJ potential plots.png"),
+        dpi=600,
+        bbox_inches="tight")
         plt.show()
         plt.figure(figsize=(7, 5))
         plt.plot(self.r_cuts, self.U_per_particle, linewidth=2.5, color='steelblue', marker='o', markersize=4)
@@ -237,7 +227,9 @@ class LJ_potential:
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
         plt.tight_layout()
-        plt.savefig(filename2.replace(".pdf", ".png"), dpi=600, bbox_inches="tight")
+        plt.savefig(os.path.join(FIGURES_DIR, f"Energy per particle plot.png"),
+        dpi=600,
+        bbox_inches="tight")
         plt.show()
 
 def main():

@@ -166,11 +166,7 @@ class GaussianMetropolisSampler():
         ax.spines["right"].set_visible(False)
         plt.title(rf"Gaussian Metropolis sampling ($\sigma={self.sigma}$)", fontsize=14)
         plt.tight_layout()
-        plt.savefig(
-        os.path.join(
-        FIGURES_DIR,
-        f"Gaussian_Metropolis_sigma_{self.sigma}.png"
-          ),
+        plt.savefig(os.path.join(FIGURES_DIR, f"Gaussian_Metropolis_sigma_{self.sigma}.png"),
         dpi=600,
         bbox_inches="tight")
         plt.show()
