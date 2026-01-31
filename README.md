@@ -5,8 +5,6 @@ It is organized to support reproducible experiments, modular development, and cl
 
 ## **Repository Structure**
 
-## Repository Structure
-
 ```
 codes/
 ├── ml/                — Machine learning framework
