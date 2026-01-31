@@ -1,9 +1,9 @@
-**Codes — ML, Simulations, and Scientific Computing**
+# **Codes — ML, Simulations, and Scientific Computing**
 
 This repository contains my structured collection of code for machine learning, Monte Carlo simulations, neural networks, and scientific computing experiments. 
 It is organized to support reproducible experiments, modular development, and clean separation between models, datasets, training scripts, and utilities.
 
-**Repository Structure**
+## **Repository Structure**
 
 codes/
 ├── ml/ — Machine learning framework
@@ -22,7 +22,7 @@ codes/
 ├── results/ — Generated outputs (ignored by git)
 └── requirements.txt
 
-**Machine Learning Module (ml/)**
+## **Machine Learning Module (ml/)**
 
 The ML module is designed like a lightweight research framework.
 
@@ -35,7 +35,7 @@ Features:
 - VS Code run-button compatible
 - Package-style imports (ml.models, ml.datasets, etc.)
 
-**Running Training Scripts (VS Code Recommended)**
+## **Running Training Scripts (VS Code Recommended)**
 
 Use the VS Code Run button with configured launch targets.
 
@@ -51,7 +51,7 @@ ml.training.run_mnist
 ml.training.train_xor
 ml.training.train_or
 
-**Environment Setup**
+## **Environment Setup**
 
 Create virtual environment:
 
@@ -64,7 +64,7 @@ pip install -r requirements.txt
 If using YAML configs:
 pip install pyyaml
 
-**Datasets**
+## **Datasets**
 
 MNIST dataset file expected at:
 ml/datasets/data/mnist.pkl.gz
@@ -72,7 +72,7 @@ ml/datasets/data/mnist.pkl.gz
 If missing, download with:
 wget http://deeplearning.net/data/mnist/mnist.pkl.gz
 
-**Simulations**
+## **Simulations**
 
 The simulations/ directory contains:
 Monte Carlo sampling
@@ -82,7 +82,7 @@ Statistical sampling methods
 
 Each simulation module contains its own README and result folders.
 
-**Experiment Configs**
+## **Experiment Configs**
 
 Experiment parameters are stored as YAML files such as:
 ml/configs/mnist_baseline.yaml
@@ -91,13 +91,13 @@ Loaded in code using:
 from ml.utils.config_loader import load_config
 cfg = load_config("mnist_baseline.yaml")
 
-**Results Handling**
+## **Results Handling**
 
 Generated outputs go to:
 results/
 This folder is git-ignored to avoid committing large files.
 
-**Goals of This Repository**
+## **Goals of This Repository**
 
 Reproducible ML experiments
 Clean modular architecture
@@ -105,7 +105,7 @@ Research-ready structure
 Expandable simulation framework
 Multi-language scientific coding
 
-Author
+## **Author**
 
 Kirti Kashyap 'Taijas'
 Research focus: Machine Learning, Simulations, Scientific Computing, AI
