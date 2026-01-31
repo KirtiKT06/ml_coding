@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-int main() {
+int main() 
+{
     int N = 1000000;
     FILE *fp;
 
